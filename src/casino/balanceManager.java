@@ -17,4 +17,8 @@ public class balanceManager {
         balance -= amount;
         updateBalance();
     }
+    
+    public long getBalance() {
+        return balance;
+    }
 }
