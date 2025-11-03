@@ -105,6 +105,17 @@ public class AccountManager {
     private void loginAndStart(String nickname) {
         Player player = accounts.get(nickname);
         mainMenu.getFrame().dispose();
-        new CasinoUI(player); 
+        new casinoUI(player); 
+    }
+    
+    private void saveAccounts() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE))) {
+            for (Player p : accounts.values()) {
+                bw.write(p.nickname + ":" + p.password + ":" + p.balance);
+                bw.newLine();
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to save accounts: " + e.getMessage());
+        }
     }
 }
