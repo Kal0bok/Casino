@@ -95,4 +95,28 @@ public class gameLogic {
         }
     }
     
+    private long calculateWin(String[] result, long bet) {
+        boolean allSame = result[0].equals(result[1]) && result[1].equals(result[2]);
+        boolean twoSame = !allSame && (result[0].equals(result[1]) || result[1].equals(result[2]) || result[0].equals(result[2]));
+
+        if (allSame) {
+            return switch (result[0]) {
+                case "Cherry" -> bet * 2;
+                case "Lemon" -> bet * 3;
+                case "Watermelon" -> bet * 4;
+                case "Beer" -> bet * 10;
+                case "Diamond" -> bet * 50;
+                default -> 0;
+            };
+        } else if (twoSame) {
+            return bet * 2;
+        }
+        return 0;
+    }
+
+    private void showError(String msg) {
+        ui.getResultLabel().setText(msg);
+        ui.getResultLabel().setForeground(java.awt.Color.RED);
+        ui.getSpinButton().setEnabled(true);
+    }
 }
