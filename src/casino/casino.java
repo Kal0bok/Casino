@@ -7,6 +7,7 @@ casino
 ├── Casino.java        → Main class (start)
 ├── CasinoUI.java          → Visual (GUI)
 ├── MainMenu.java           → Start window
+├── AccountManager.java     ← Registration, login, save
 ├── GameLogic.java         → GAME LOGIC	(spin, animation)
 └── BalanceManager.java    → Balance, wins, formating
 */
