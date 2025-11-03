@@ -12,4 +12,30 @@ public class gameLogic {
         this.ui = ui;
 	
 }
+    public void spin(String betInput) {
+        ui.getSpinButton().setEnabled(false);
+        ui.getResultLabel().setText("Spinning...");
+        ui.getResultLabel().setForeground(java.awt.Color.YELLOW);
+
+        long bet;
+        try {
+            bet = Long.parseLong(betInput.trim());
+        } catch (Exception e) {
+            showError("Error: Enter a valid number!");
+            return;
+        }
+
+        if (bet <= 0) {
+            showError("Bet must be > 0!");
+            return;
+        }
+
+        if (bet > ui.getBalanceManager().getBalance()) {
+            showError("Not enough balance! Max: " + ui.getBalanceManager().format(ui.getBalanceManager().getBalance()));
+            return;
+        }
+
+        ui.getBalanceManager().subtract(bet);
+        animateReels(() -> finishSpin(bet));
+    }
 }
