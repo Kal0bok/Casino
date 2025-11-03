@@ -1,25 +1,14 @@
 package casino;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
+import java.awt.*;
 
 public class MainMenu {
-	private final JFrame frame;
+    private final JFrame frame;
+    private final AccountManager accountManager;
 
     public MainMenu() {
+        accountManager = new AccountManager(this);
         frame = new JFrame("Slot Casino");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
@@ -33,7 +22,37 @@ public class MainMenu {
 
         frame.setVisible(true);
     }
-    
+
+    // ... (всё как раньше, но кнопки теперь вызывают AccountManager)
+
+    private void createButtons() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(3, 1, 15, 15));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 100, 40, 100));
+        buttonPanel.setBackground(new Color(20, 30, 60));
+
+        JButton registerBtn = createStyledButton("REGISTER", new Color(50, 205, 50));
+        JButton loginBtn = createStyledButton("LOGIN", new Color(30, 144, 255));
+        JButton exitBtn = createStyledButton("EXIT", new Color(220, 20, 60));
+
+        registerBtn.addActionListener(e -> accountManager.register());
+        loginBtn.addActionListener(e -> accountManager.login());
+        exitBtn.addActionListener(e -> System.exit(0));
+
+        buttonPanel.add(registerBtn);
+        buttonPanel.add(loginBtn);
+        buttonPanel.add(exitBtn);
+
+        frame.add(buttonPanel, BorderLayout.CENTER);
+    }
+
+    // ... (createTitle, createInfoButtons, showHelp, showRules — без изменений)
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    // Остальное — как в предыдущей версии
     private void createTitle() {
         JLabel title = new JLabel("CASINO SLOTS", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 48));
@@ -45,31 +64,7 @@ public class MainMenu {
         titlePanel.add(title, BorderLayout.CENTER);
         frame.add(titlePanel, BorderLayout.NORTH);
     }
-    
-    private void createButtons() {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 1, 15, 15));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 100, 40, 100));
-        buttonPanel.setBackground(new Color(20, 30, 60));
 
-        JButton registerBtn = createStyledButton("REGISTER", new Color(50, 205, 50));
-        JButton loginBtn = createStyledButton("LOGIN", new Color(30, 144, 255));
-        JButton exitBtn = createStyledButton("EXIT", new Color(220, 20, 60));
-
-        registerBtn.addActionListener(e -> showMessage("Registration coming soon!"));
-        loginBtn.addActionListener(e -> {
-            frame.dispose();
-            new casinoUI();
-        });
-        exitBtn.addActionListener(e -> System.exit(0));
-
-        buttonPanel.add(registerBtn);
-        buttonPanel.add(loginBtn);
-        buttonPanel.add(exitBtn);
-
-        frame.add(buttonPanel, BorderLayout.CENTER);
-    }
-    
     private JButton createStyledButton(String text, Color bg) {
         JButton btn = new JButton(text);
         btn.setFont(new Font("Arial", Font.BOLD, 22));
@@ -80,7 +75,7 @@ public class MainMenu {
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         return btn;
     }
-    
+
     private void createInfoButtons() {
         JPanel cornerPanel = new JPanel(new BorderLayout());
         cornerPanel.setBackground(new Color(20, 30, 60));
@@ -115,24 +110,22 @@ public class MainMenu {
 
         frame.add(cornerPanel, BorderLayout.SOUTH);
     }
-    
+
     private void showHelp() {
         String help = """
             <html>
             <h2>How to Play:</h2>
             <ul>
-            <li>Enter your bet in the field</li>
+            <li>Register or login</li>
+            <li>Enter your bet</li>
             <li>Press <b>SPIN!</b></li>
             <li>Match symbols to win!</li>
-            <li>2 same = x2 bet</li>
-            <li>3 same = bigger win!</li>
             </ul>
-            <p><b>Good luck!</b></p>
             </html>
             """;
         JOptionPane.showMessageDialog(frame, help, "Help", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     private void showRules() {
         String rules = """
             <html>
@@ -145,13 +138,9 @@ public class MainMenu {
             <tr><td>Diamond Diamond Diamond</td><td>= x50</td></tr>
             <tr><td><i>Any 2 same</i></td><td>= x2</td></tr>
             </table>
-            <p><b>Balance shown in T/B/M</b></p>
+            <p><b>Admin has 300T!</b></p>
             </html>
             """;
         JOptionPane.showMessageDialog(frame, rules, "Rules", JOptionPane.WARNING_MESSAGE);
-    }
-    
-    private void showMessage(String msg) {
-        JOptionPane.showMessageDialog(frame, msg, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 }
