@@ -101,4 +101,10 @@ public class AccountManager {
             loginAndStart(nick);
         }
     }
+    
+    private void loginAndStart(String nickname) {
+        Player player = accounts.get(nickname);
+        mainMenu.getFrame().dispose();
+        new CasinoUI(player); 
+    }
 }
