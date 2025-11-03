@@ -57,4 +57,34 @@ public class сasinoUI {
         frame.add(panel, BorderLayout.CENTER);
         return panel;
     }
+    
+    private void setupControlPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        panel.setBackground(new Color(20, 40, 70));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JLabel betLabel = new JLabel("Bet:");
+        betLabel.setForeground(Color.CYAN);
+        betLabel.setFont(new Font("Arial", Font.BOLD, 16));
+
+        betField = new JTextField("1000", 10);
+        betField.setFont(new Font("Arial", Font.BOLD, 16));
+        betField.setHorizontalAlignment(JTextField.CENTER);
+
+        spinButton = new JButton("SPIN!");
+        spinButton.setFont(new Font("Arial", Font.BOLD, 18));
+        spinButton.setBackground(new Color(255, 215, 0));
+        spinButton.setForeground(Color.BLACK);
+        spinButton.setFocusPainted(false);
+        spinButton.setPreferredSize(new Dimension(140, 45));
+        spinButton.addActionListener(e -> gameLogic.spin(betField.getText()));
+
+        panel.add(betLabel);
+        panel.add(betField);
+        panel.add(spinButton);
+
+        frame.add(panel, BorderLayout.SOUTH);
+    }
+}
 }
