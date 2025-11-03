@@ -4,19 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class casinoUI {
-    private final JFrame frame;
-    private final JPanel reelPanel;
-    private final JLabel[] reels = new JLabel[3];
-    private final JTextField betField;
-    private final JButton spinButton;
-    private final JLabel balanceLabel;
-    private final JLabel resultLabel;
+	
+    private JFrame frame;
+    @SuppressWarnings("unused")
+	private JPanel reelPanel;
+    private JLabel[] reels = new JLabel[3];
+    private JTextField betField;
+    private JButton spinButton;
+    private JLabel balanceLabel;
+    private JLabel resultLabel;
 
     private final gameLogic gameLogic;
     private final balanceManager balanceManager;
 
     public casinoUI() {
-        gameLogic = new gameLogic(this);
+        this.betField = new JTextField();
+		this.spinButton = new JButton();
+		this.balanceLabel = new JLabel();
+		this.resultLabel = new JLabel();
+		gameLogic = new gameLogic(this);
         balanceManager = new balanceManager(this);
 
         frame = new JFrame("Slot Casino");
@@ -107,5 +113,5 @@ public class casinoUI {
     public JLabel[] getReels() { return reels; }
     public JLabel getResultLabel() { return resultLabel; }
     public JButton getSpinButton() { return spinButton; }
-    public BalanceManager getBalanceManager() { return balanceManager; }
+    public balanceManager getbalanceManager() { return balanceManager; }
 }

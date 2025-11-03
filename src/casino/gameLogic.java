@@ -33,12 +33,12 @@ public class gameLogic {
             return;
         }
 
-        if (bet > ui.getBalanceManager().getBalance()) {
-            showError("Not enough balance! Max: " + ui.getBalanceManager().format(ui.getBalanceManager().getBalance()));
+        if (bet > ui.getbalanceManager().getBalance()) {
+            showError("Not enough balance! Max: " + ui.getbalanceManager().format(ui.getbalanceManager().getBalance()));
             return;
         }
 
-        ui.getBalanceManager().subtract(bet);
+        ui.getbalanceManager().subtract(bet);
         animateReels(() -> finishSpin(bet));
     }
     
@@ -64,8 +64,8 @@ public class gameLogic {
         SwingUtilities.invokeLater(() -> {
             displayResult(result);
             if (win > 0) {
-                ui.getBalanceManager().add(win);
-                ui.getResultLabel().setText("WIN: +" + ui.getBalanceManager().format(win) + " (x" + (win / bet) + ")");
+                ui.getbalanceManager().add(win);
+                ui.getResultLabel().setText("WIN: +" + ui.getbalanceManager().format(win) + " (x" + (win / bet) + ")");
                 ui.getResultLabel().setForeground(java.awt.Color.GREEN);
             } else {
                 ui.getResultLabel().setText("Lost. Try again!");
@@ -73,7 +73,7 @@ public class gameLogic {
             }
             ui.getSpinButton().setEnabled(true);
 
-            if (ui.getBalanceManager().getBalance() <= 0) {
+            if (ui.getbalanceManager().getBalance() <= 0) {
                 ui.getResultLabel().setText("BANKRUPT! Game Over.");
                 ui.getResultLabel().setForeground(java.awt.Color.RED);
                 ui.getSpinButton().setEnabled(false);
