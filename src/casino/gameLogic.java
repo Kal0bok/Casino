@@ -80,4 +80,19 @@ public class gameLogic {
             }
         });
     }
+    
+    private String[] generateSpin() {
+        String[] result = new String[3];
+        for (int i = 0; i < 3; i++) {
+            result[i] = EMOJIS[random.nextInt(EMOJIS.length)];
+        }
+        return result;
+    }
+
+    private void displayResult(String[] result) {
+        for (int i = 0; i < 3; i++) {
+            ui.getReels()[i].setText(result[i]);
+        }
+    }
+    
 }
