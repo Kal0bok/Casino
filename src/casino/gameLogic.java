@@ -2,6 +2,8 @@ package casino;
 
 import java.util.Random;
 
+import javax.swing.JLabel;
+
 public class gameLogic {
 	private static final String[] EMOJIS = {"Cherry", "Lemon", "Watermelon", "Beer", "Diamond"};
     private static final Random random = new Random();
@@ -37,5 +39,21 @@ public class gameLogic {
 
         ui.getBalanceManager().subtract(bet);
         animateReels(() -> finishSpin(bet));
+    }
+    
+    private void animateReels(Runnable onFinish) {
+        new Thread(() -> {
+            try {
+                for (int i = 0; i < 14; i++) {
+                    for (JLabel reel : ui.getReels()) {
+                        reel.setText(EMOJIS[random.nextInt(EMOJIS.length)]);
+                    }
+                    Thread.sleep(110);
+                }
+                onFinish.run();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }
