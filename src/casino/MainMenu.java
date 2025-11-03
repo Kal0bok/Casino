@@ -132,4 +132,22 @@ public class MainMenu {
             """;
         JOptionPane.showMessageDialog(frame, help, "Help", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    private void showRules() {
+        String rules = """
+            <html>
+            <h2>Game Rules:</h2>
+            <table border='0'>
+            <tr><td>Cherry Cherry Cherry</td><td>= x2</td></tr>
+            <tr><td>Lemon Lemon Lemon</td><td>= x3</td></tr>
+            <tr><td>Watermelon Watermelon Watermelon</td><td>= x4</td></tr>
+            <tr><td>Beer Beer Beer</td><td>= x10</td></tr>
+            <tr><td>Diamond Diamond Diamond</td><td>= x50</td></tr>
+            <tr><td><i>Any 2 same</i></td><td>= x2</td></tr>
+            </table>
+            <p><b>Balance shown in T/B/M</b></p>
+            </html>
+            """;
+        JOptionPane.showMessageDialog(frame, rules, "Rules", JOptionPane.WARNING_MESSAGE);
+    }
 }
