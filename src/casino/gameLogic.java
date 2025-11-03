@@ -3,6 +3,7 @@ package casino;
 import java.util.Random;
 
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 public class gameLogic {
 	private static final String[] EMOJIS = {"Cherry", "Lemon", "Watermelon", "Beer", "Diamond"};
@@ -55,5 +56,28 @@ public class gameLogic {
                 e.printStackTrace();
             }
         }).start();
+    }
+    private void finishSpin(long bet) {
+        String[] result = generateSpin();
+        long win = calculateWin(result, bet);
+
+        SwingUtilities.invokeLater(() -> {
+            displayResult(result);
+            if (win > 0) {
+                ui.getBalanceManager().add(win);
+                ui.getResultLabel().setText("WIN: +" + ui.getBalanceManager().format(win) + " (x" + (win / bet) + ")");
+                ui.getResultLabel().setForeground(java.awt.Color.GREEN);
+            } else {
+                ui.getResultLabel().setText("Lost. Try again!");
+                ui.getResultLabel().setForeground(java.awt.Color.ORANGE);
+            }
+            ui.getSpinButton().setEnabled(true);
+
+            if (ui.getBalanceManager().getBalance() <= 0) {
+                ui.getResultLabel().setText("BANKRUPT! Game Over.");
+                ui.getResultLabel().setForeground(java.awt.Color.RED);
+                ui.getSpinButton().setEnabled(false);
+            }
+        });
     }
 }
