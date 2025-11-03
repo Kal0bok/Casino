@@ -12,4 +12,9 @@ public class balanceManager {
         balance += amount;
         updateBalance();
     }
+    
+    public void subtract(long amount) {
+        balance -= amount;
+        updateBalance();
+    }
 }
