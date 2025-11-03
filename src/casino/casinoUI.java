@@ -1,15 +1,9 @@
 package casino;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-public class сasinoUI {
+public class casinoUI {
     private final JFrame frame;
     private final JPanel reelPanel;
     private final JLabel[] reels = new JLabel[3];
@@ -21,6 +15,7 @@ public class сasinoUI {
     private final GameLogic gameLogic;
     private final BalanceManager balanceManager;
 
+    public casinoUI() {
         gameLogic = new GameLogic(this);
         balanceManager = new BalanceManager(this);
 
@@ -38,6 +33,7 @@ public class сasinoUI {
         frame.setVisible(true);
         balanceManager.updateBalance();
     }
+
     private JPanel setupReels() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 3, 15, 0));
@@ -57,7 +53,7 @@ public class сasinoUI {
         frame.add(panel, BorderLayout.CENTER);
         return panel;
     }
-    
+
     private void setupControlPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
@@ -86,31 +82,30 @@ public class сasinoUI {
 
         frame.add(panel, BorderLayout.SOUTH);
     }
-    
-}
-private void setupInfoPanel() {
-    JPanel panel = new JPanel();
-    panel.setLayout(new GridLayout(2, 1));
-    panel.setBorder(BorderFactory.createEmptyBorder(10, 30, 5, 30));
-    panel.setBackground(new Color(15, 30, 60));
 
-    balanceLabel = new JLabel("", SwingConstants.CENTER);
-    balanceLabel.setForeground(Color.CYAN);
-    balanceLabel.setFont(new Font("Arial", Font.BOLD, 18));
+    private void setupInfoPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 1));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 30, 5, 30));
+        panel.setBackground(new Color(15, 30, 60));
 
-    resultLabel = new JLabel("Press SPIN to play!", SwingConstants.CENTER);
-    resultLabel.setForeground(Color.LIGHT_GRAY);
-    resultLabel.setFont(new Font("Arial", Font.ITALIC, 16));
+        balanceLabel = new JLabel("", SwingConstants.CENTER);
+        balanceLabel.setForeground(Color.CYAN);
+        balanceLabel.setFont(new Font("Arial", Font.BOLD, 18));
 
-    panel.add(balanceLabel);
-    panel.add(resultLabel);
+        resultLabel = new JLabel("Press SPIN to play!", SwingConstants.CENTER);
+        resultLabel.setForeground(Color.LIGHT_GRAY);
+        resultLabel.setFont(new Font("Arial", Font.ITALIC, 16));
 
-    frame.add(panel, BorderLayout.NORTH);
-}
+        panel.add(balanceLabel);
+        panel.add(resultLabel);
 
-public JLabel[] getReels() { return reels; }
-public JLabel getResultLabel() { return resultLabel; }
-public JButton getSpinButton() { return spinButton; }
-public BalanceManager getBalanceManager() { return balanceManager; }
-}
+        frame.add(panel, BorderLayout.NORTH);
+    }
+
+    // Геттеры для других классов
+    public JLabel[] getReels() { return reels; }
+    public JLabel getResultLabel() { return resultLabel; }
+    public JButton getSpinButton() { return spinButton; }
+    public BalanceManager getBalanceManager() { return balanceManager; }
 }
