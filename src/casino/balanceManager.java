@@ -7,4 +7,9 @@ public class balanceManager {
     public balanceManager(casinoUI ui) {
         this.ui = ui;
     }
+    
+    public void add(long amount) {
+        balance += amount;
+        updateBalance();
+    }
 }
