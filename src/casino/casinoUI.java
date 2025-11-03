@@ -17,10 +17,12 @@ public class casinoUI {
     private final gameLogic gameLogic;
     private final balanceManager balanceManager;
 	private AccountManager.Player player;
+	private final AccountManager accountManager;
 
-	public casinoUI(AccountManager.Player player) {
+
+	public casinoUI(AccountManager.Player player, AccountManager accountManager) {
 	    this.player = player;
-
+	    this.accountManager = accountManager;
 	    this.balanceManager = new balanceManager(this, player.getBalance());
 	    this.gameLogic = new gameLogic(this);
 
@@ -120,6 +122,14 @@ public class casinoUI {
     
     public void updatePlayerBalance() {
         player.setBalance(balanceManager.getBalance());
+    }
+    
+    public AccountManager.Player getPlayer() {
+        return player;
+    }
+    
+    public AccountManager getAccountManager() {
+        return accountManager;
     }
 
     public JLabel[] getReels() { return reels; }

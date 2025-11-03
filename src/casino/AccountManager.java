@@ -9,9 +9,8 @@ import java.util.Map;
 
 public class AccountManager {
     private static final String FILE = "accounts.txt";
-    private final Map<String, Player> accounts = new HashMap<>();
+    private final static Map<String, Player> accounts = new HashMap<>();
     private final MainMenu mainMenu;
-	@SuppressWarnings("unused")
 	private long balance;
 
     public AccountManager(MainMenu mainMenu) {
@@ -109,8 +108,9 @@ public class AccountManager {
     private void loginAndStart(String nickname) {
         Player player = accounts.get(nickname);
         mainMenu.getFrame().dispose();
-        new casinoUI(player);  
+        new casinoUI(player, this); 
     }
+
 
     public long getBalance() {
         return balance;  
@@ -120,7 +120,7 @@ public class AccountManager {
         this.balance = balance;  
     }
 
-    private void saveAccounts() {
+    private static void saveAccounts() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE))) {
             for (Player p : accounts.values()) {
                 bw.write(p.nickname + ":" + p.password + ":" + p.balance);
@@ -157,5 +157,15 @@ public class AccountManager {
         public void setBalance(long balance) {
             this.balance = balance;
         }
+        
+        public void updatePlayer(Player player) {
+            accounts.put(player.nickname, player);
+            saveAccounts();
+        }
     }
+
+	public void updatePlayer(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 }

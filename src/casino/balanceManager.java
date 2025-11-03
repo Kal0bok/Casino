@@ -22,6 +22,9 @@ public class balanceManager {
         balance += amount;
         updateBalance();
         ui.updatePlayerBalance(); 
+        if (ui.getAccountManager() != null) {
+            ui.getAccountManager().updatePlayer(ui.getPlayer());
+        }
     }
 
     public void subtract(long amount) {
@@ -29,6 +32,9 @@ public class balanceManager {
         balance -= amount;
         updateBalance();
         ui.updatePlayerBalance();
+        if (ui.getAccountManager() != null) {
+            ui.getAccountManager().updatePlayer(ui.getPlayer());
+        }
     }
 
     public long getBalance() {
