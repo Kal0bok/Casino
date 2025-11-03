@@ -1,6 +1,9 @@
 package casino;
 
 import javax.swing.*;
+
+import casino.AccountManager.Player;
+
 import java.awt.*;
 
 public class casinoUI {
@@ -15,9 +18,12 @@ public class casinoUI {
     private JLabel resultLabel;
 
     private final gameLogic gameLogic;
-    private final balanceManager balanceManager;
+    private balanceManager balanceManager;
+	private Player player;
 
-    public casinoUI() {
+    public casinoUI(AccountManager.Player player) {
+    	this.player = player;
+        balanceManager = new balanceManager(this, player.balance);
         this.betField = new JTextField();
 		this.spinButton = new JButton();
 		this.balanceLabel = new JLabel();

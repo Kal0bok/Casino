@@ -8,11 +8,12 @@ public class balanceManager {
     private long balance = 100_000_000_000_000L; // 100T
     private final casinoUI ui;
 
-    public balanceManager(casinoUI ui) {
-        this.ui = ui;
-    }
+    public balanceManager(casinoUI casinoUI, long balance2) {
+		this.ui = null;
+		// TODO Auto-generated constructor stub
+	}
 
-    public void add(long amount) {
+	public void add(long amount) {
         balance += amount;
         updateBalance();
     }
@@ -31,7 +32,8 @@ public class balanceManager {
         SwingUtilities.invokeLater(() ->
         	ui.getClass()
         	);
-        Field[] components = ui.getClass().getFields();
+        @SuppressWarnings("unused")
+		Field[] components = ui.getClass().getFields();
         try {
             java.lang.reflect.Field field = casinoUI.class.getDeclaredField("balanceLabel");
             field.setAccessible(true);

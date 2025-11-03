@@ -121,7 +121,7 @@ public class AccountManager {
         }
     }
     
-    private static class Player {
+    static class Player {
         String nickname, password;
         long balance;
 
