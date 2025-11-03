@@ -74,4 +74,31 @@ public class AccountManager {
             loginAndStart(nick);
         }
     }
+    
+    public void login() {
+        JTextField nickField = new JTextField(15);
+        JPasswordField passField = new JPasswordField(15);
+
+        JPanel panel = new JPanel(new GridLayout(0, 2, 5, 10));
+        panel.add(new JLabel("Nickname:"));
+        panel.add(nickField);
+        panel.add(new JLabel("Password:"));
+        panel.add(passField);
+
+        int result = JOptionPane.showConfirmDialog(mainMenu.getFrame(), panel,
+                "Login", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String nick = nickField.getText().trim();
+            String pass = new String(passField.getPassword()).trim();
+
+            Player player = accounts.get(nick);
+            if (player == null || !player.password.equals(pass)) {
+                JOptionPane.showMessageDialog(mainMenu.getFrame(), "Wrong nickname or password!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            loginAndStart(nick);
+        }
+    }
 }
