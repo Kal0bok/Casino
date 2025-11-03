@@ -12,12 +12,12 @@ public class casinoUI {
     private final JLabel balanceLabel;
     private final JLabel resultLabel;
 
-    private final GameLogic gameLogic;
-    private final BalanceManager balanceManager;
+    private final gameLogic gameLogic;
+    private final balanceManager balanceManager;
 
     public casinoUI() {
-        gameLogic = new GameLogic(this);
-        balanceManager = new BalanceManager(this);
+        gameLogic = new gameLogic(this);
+        balanceManager = new balanceManager(this);
 
         frame = new JFrame("Slot Casino");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
