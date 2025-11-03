@@ -150,4 +150,8 @@ public class MainMenu {
             """;
         JOptionPane.showMessageDialog(frame, rules, "Rules", JOptionPane.WARNING_MESSAGE);
     }
+    
+    private void showMessage(String msg) {
+        JOptionPane.showMessageDialog(frame, msg, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
 }
