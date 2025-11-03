@@ -2,14 +2,20 @@ package casino;
 
 import javax.swing.*;
 
-public class balanceManager { 
+public class balanceManager {
     private long balance;
-    private final casinoUI ui; 
+    private final casinoUI ui;
 
     public balanceManager(casinoUI ui, long initialBalance) {
         this.ui = ui;
-        this.balance = initialBalance;
+        this.balance = initialBalance; // УСТАНАВЛИВАЕМ ПЕРЕДАННЫЙ БАЛАНС
         updateBalance();
+    }
+
+    public void setBalance(long newBalance) {
+        this.balance = newBalance;
+        updateBalance();
+        ui.updatePlayerBalance();
     }
 
     public void add(long amount) {

@@ -18,13 +18,16 @@ public class casinoUI {
     private final balanceManager balanceManager;
 	private AccountManager.Player player;
 
-    public casinoUI(AccountManager.Player player) {
-        this.player = player;
+	public casinoUI(AccountManager.Player player) {
+	    this.player = player;
 
-        this.balanceManager = new balanceManager(this, player.getBalance());
-        this.gameLogic = new gameLogic(this);
+	    this.balanceManager = new balanceManager(this, player.getBalance());
+	    this.gameLogic = new gameLogic(this);
 
-        initializeUI();
+	    initializeUI();
+	    
+	    balanceManager.setBalance(player.getBalance());
+	
 
         frame = new JFrame("Slot Casino");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
