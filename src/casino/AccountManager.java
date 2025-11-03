@@ -10,4 +10,9 @@ public class AccountManager {
     private final Map<String, Player> accounts = new HashMap<>();
     private final MainMenu mainMenu;
 	
+    public AccountManager(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+        loadAccounts();
+        createAdminIfNotExists();
+    }
 }
