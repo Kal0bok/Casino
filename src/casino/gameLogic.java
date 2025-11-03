@@ -1,20 +1,17 @@
 package casino;
 
 import java.util.Random;
-
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 public class gameLogic {
-	private static final String[] EMOJIS = {"🍒", "🍋", "🍉", "🍺", "💎"};
+    private static final String[] EMOJIS = {"🍒", "🍋", "🍉", "🍺", "💎"};
     private static final Random random = new Random();
-
     private final casinoUI ui;
 
     public gameLogic(casinoUI ui) {
         this.ui = ui;
-	
-}
+    }
+
     public void spin(String betInput) {
         ui.getSpinButton().setEnabled(false);
         ui.getResultLabel().setText("Spinning...");
@@ -41,7 +38,7 @@ public class gameLogic {
         ui.getbalanceManager().subtract(bet);
         animateReels(() -> finishSpin(bet));
     }
-    
+
     private void animateReels(Runnable onFinish) {
         new Thread(() -> {
             try {
@@ -57,6 +54,7 @@ public class gameLogic {
             }
         }).start();
     }
+
     private void finishSpin(long bet) {
         String[] result = generateSpin();
         long win = calculateWin(result, bet);
@@ -80,13 +78,13 @@ public class gameLogic {
             }
         });
     }
-    
+
     private String[] generateSpin() {
-        String[] result = new String[3];
-        for (int i = 0; i < 3; i++) {
-            result[i] = EMOJIS[random.nextInt(EMOJIS.length)];
-        }
-        return result;
+        return new String[]{
+            EMOJIS[random.nextInt(EMOJIS.length)],
+            EMOJIS[random.nextInt(EMOJIS.length)],
+            EMOJIS[random.nextInt(EMOJIS.length)]
+        };
     }
 
     private void displayResult(String[] result) {
@@ -94,19 +92,19 @@ public class gameLogic {
             ui.getReels()[i].setText(result[i]);
         }
     }
-    
+
     private long calculateWin(String[] result, long bet) {
         boolean allSame = result[0].equals(result[1]) && result[1].equals(result[2]);
         boolean twoSame = !allSame && (result[0].equals(result[1]) || result[1].equals(result[2]) || result[0].equals(result[2]));
 
         if (allSame) {
-            return switch (result[0]) {
-                case "Cherry" -> bet * 2;
-                case "Lemon" -> bet * 3;
-                case "Watermelon" -> bet * 4;
-                case "Beer" -> bet * 10;
-                case "Diamond" -> bet * 50;
-                default -> 0;
+        	return switch (result[0]) {
+            case "🍒" -> bet * 2;
+            case "🍋" -> bet * 3;
+            case "🍉" -> bet * 4;
+            case "🍺" -> bet * 10;
+            case "💎" -> bet * 50;
+            default -> 0;
             };
         } else if (twoSame) {
             return bet * 2;

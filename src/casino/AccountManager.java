@@ -8,16 +8,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AccountManager {
-	private static final String FILE = "accounts.txt";
+    private static final String FILE = "accounts.txt";
     private final Map<String, Player> accounts = new HashMap<>();
     private final MainMenu mainMenu;
-	
+	@SuppressWarnings("unused")
+	private long balance;
+
     public AccountManager(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
         loadAccounts();
         createAdminIfNotExists();
     }
-    
+
     private void loadAccounts() {
         File file = new File(FILE);
         if (!file.exists()) return;
@@ -34,14 +36,14 @@ public class AccountManager {
             JOptionPane.showMessageDialog(null, "Error loading accounts!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void createAdminIfNotExists() {
         if (!accounts.containsKey("admin")) {
             accounts.put("admin", new Player("admin", "admin", 300_000_000_000_000L)); // 300T
             saveAccounts();
         }
     }
-    
+
     public void register() {
         JTextField nickField = new JTextField(15);
         JPasswordField passField = new JPasswordField(15);
@@ -76,7 +78,7 @@ public class AccountManager {
             loginAndStart(nick);
         }
     }
-    
+
     public void login() {
         JTextField nickField = new JTextField(15);
         JPasswordField passField = new JPasswordField(15);
@@ -103,13 +105,21 @@ public class AccountManager {
             loginAndStart(nick);
         }
     }
-    
+
     private void loginAndStart(String nickname) {
         Player player = accounts.get(nickname);
         mainMenu.getFrame().dispose();
-        new casinoUI(player); 
+        new casinoUI(player);  
     }
-    
+
+    public long getBalance() {
+        return getBalance();
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
+    }
+
     private void saveAccounts() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE))) {
             for (Player p : accounts.values()) {
@@ -120,8 +130,8 @@ public class AccountManager {
             System.err.println("Failed to save accounts: " + e.getMessage());
         }
     }
-    
-    static class Player {
+
+    public static class Player {
         String nickname, password;
         long balance;
 
@@ -130,5 +140,15 @@ public class AccountManager {
             this.password = p;
             this.balance = b;
         }
+
+		public void setBalance(long balance2) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public long getBalance() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
     }
 }

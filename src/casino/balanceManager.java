@@ -1,26 +1,28 @@
 package casino;
 
-import java.lang.reflect.Field;
+import javax.swing.*;
 
-import javax.swing.SwingUtilities;
+public class balanceManager { 
+    private long balance;
+    private final casinoUI ui; 
 
-public class balanceManager {
-    private long balance = 100_000_000_000_000L; // 100T
-    private final casinoUI ui;
-
-    public balanceManager(casinoUI casinoUI, long balance2) {
-		this.ui = null;
-		// TODO Auto-generated constructor stub
-	}
-
-	public void add(long amount) {
-        balance += amount;
+    public balanceManager(casinoUI ui, long initialBalance) {
+        this.ui = ui;
+        this.balance = initialBalance;
         updateBalance();
     }
 
+    public void add(long amount) {
+        balance += amount;
+        updateBalance();
+        ui.updatePlayerBalance(); 
+    }
+
     public void subtract(long amount) {
+        if (amount > balance) amount = balance;
         balance -= amount;
         updateBalance();
+        ui.updatePlayerBalance();
     }
 
     public long getBalance() {
@@ -28,20 +30,9 @@ public class balanceManager {
     }
 
     public void updateBalance() {
-        ui.getClass(); // IDE fix
-        SwingUtilities.invokeLater(() ->
-        	ui.getClass()
-        	);
-        @SuppressWarnings("unused")
-		Field[] components = ui.getClass().getFields();
-        try {
-            java.lang.reflect.Field field = casinoUI.class.getDeclaredField("balanceLabel");
-            field.setAccessible(true);
-            javax.swing.JLabel label = (javax.swing.JLabel) field.get(ui);
-            label.setText("Balance: " + format(balance));
-        } catch (Exception e) {
-            // fallback
-        }
+        SwingUtilities.invokeLater(() -> {
+            ui.getBalanceLabel().setText("Balance: " + format(balance));
+        });
     }
 
     public String format(long amount) {

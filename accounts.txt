@@ -1,0 +1,4 @@
+admin:admin:300000000000000
+asdasda:asdasd:1000
+fgdfg:dfgdfg:1000
+Bogdan:1111:1000

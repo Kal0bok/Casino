@@ -23,8 +23,6 @@ public class MainMenu {
         frame.setVisible(true);
     }
 
-    // ... (всё как раньше, но кнопки теперь вызывают AccountManager)
-
     private void createButtons() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 1, 15, 15));
@@ -46,13 +44,11 @@ public class MainMenu {
         frame.add(buttonPanel, BorderLayout.CENTER);
     }
 
-    // ... (createTitle, createInfoButtons, showHelp, showRules — без изменений)
 
     public JFrame getFrame() {
         return frame;
     }
 
-    // Остальное — как в предыдущей версии
     private void createTitle() {
         JLabel title = new JLabel("CASINO SLOTS", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 48));
@@ -116,11 +112,13 @@ public class MainMenu {
             <html>
             <h2>How to Play:</h2>
             <ul>
-            <li>Register or login</li>
-            <li>Enter your bet</li>
+            <li>Enter your bet in the field</li>
             <li>Press <b>SPIN!</b></li>
             <li>Match symbols to win!</li>
+            <li>2 same = x2 bet</li>
+            <li>3 same = bigger win!</li>
             </ul>
+            <p><b>Good luck!</b></p>
             </html>
             """;
         JOptionPane.showMessageDialog(frame, help, "Help", JOptionPane.INFORMATION_MESSAGE);

@@ -1,13 +1,10 @@
 package casino;
 
 import javax.swing.*;
-
-import casino.AccountManager.Player;
-
 import java.awt.*;
 
 public class casinoUI {
-	
+
     private JFrame frame;
     @SuppressWarnings("unused")
 	private JPanel reelPanel;
@@ -18,18 +15,16 @@ public class casinoUI {
     private JLabel resultLabel;
 
     private final gameLogic gameLogic;
-    private balanceManager balanceManager;
-	private Player player;
+    private final balanceManager balanceManager;
+	private AccountManager.Player player;
 
     public casinoUI(AccountManager.Player player) {
-    	this.player = player;
-        balanceManager = new balanceManager(this, player.balance);
-        this.betField = new JTextField();
-		this.spinButton = new JButton();
-		this.balanceLabel = new JLabel();
-		this.resultLabel = new JLabel();
-		gameLogic = new gameLogic(this);
-        balanceManager = new balanceManager(this);
+        this.player = player;
+
+        this.balanceManager = new balanceManager(this, player.getBalance());
+        this.gameLogic = new gameLogic(this);
+
+        initializeUI();
 
         frame = new JFrame("Slot Casino");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +41,12 @@ public class casinoUI {
         balanceManager.updateBalance();
     }
 
-    private JPanel setupReels() {
+    private void initializeUI() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private JPanel setupReels() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 3, 15, 0));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
@@ -114,9 +114,15 @@ public class casinoUI {
 
         frame.add(panel, BorderLayout.NORTH);
     }
+    
+    public void updatePlayerBalance() {
+        player.setBalance(balanceManager.getBalance());
+    }
 
     public JLabel[] getReels() { return reels; }
     public JLabel getResultLabel() { return resultLabel; }
     public JButton getSpinButton() { return spinButton; }
     public balanceManager getbalanceManager() { return balanceManager; }
+    public JLabel getBalanceLabel() { return balanceLabel; }  
 }
+
