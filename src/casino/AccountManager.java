@@ -118,4 +118,15 @@ public class AccountManager {
             System.err.println("Failed to save accounts: " + e.getMessage());
         }
     }
+    
+    private static class Player {
+        String nickname, password;
+        long balance;
+
+        Player(String n, String p, long b) {
+            this.nickname = n;
+            this.password = p;
+            this.balance = b;
+        }
+    }
 }
