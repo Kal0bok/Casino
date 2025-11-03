@@ -2,6 +2,7 @@ package casino;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -55,7 +56,7 @@ public class MainMenu {
         registerBtn.addActionListener(e -> showMessage("Registration coming soon!"));
         loginBtn.addActionListener(e -> {
             frame.dispose();
-            new CasinoUI(); // Переход в игру
+            new casinoUI();
         });
         exitBtn.addActionListener(e -> System.exit(0));
 
@@ -64,5 +65,16 @@ public class MainMenu {
         buttonPanel.add(exitBtn);
 
         frame.add(buttonPanel, BorderLayout.CENTER);
+    }
+    
+    private JButton createStyledButton(String text, Color bg) {
+        JButton btn = new JButton(text);
+        btn.setFont(new Font("Arial", Font.BOLD, 22));
+        btn.setForeground(Color.WHITE);
+        btn.setBackground(bg);
+        btn.setFocusPainted(false);
+        btn.setBorder(BorderFactory.createEmptyBorder(12, 30, 12, 30));
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        return btn;
     }
 }
