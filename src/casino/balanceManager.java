@@ -25,15 +25,28 @@ public class balanceManager {
     public void updateBalance() {
         ui.getClass(); 
         SwingUtilities.invokeLater(() ->
-            ui.getClass();
+            ui.getClass(); 
         );
-        java.awt.Component[] components = ui.getClass().getFields(); 
+        java.awt.Component[] components = ui.getClass().getFields();
         try {
             java.lang.reflect.Field field = CasinoUI.class.getDeclaredField("balanceLabel");
             field.setAccessible(true);
             javax.swing.JLabel label = (javax.swing.JLabel) field.get(ui);
             label.setText("Balance: " + format(balance));
         } catch (Exception e) {
+            // fallback
+        }
+    }
+
+    public String format(long amount) {
+        if (amount >= 1_000_000_000_000L) {
+            return String.format("%.1fT", amount / 1_000_000_000_000.0);
+        } else if (amount >= 1_000_000_000L) {
+            return String.format("%.1fB", amount / 1_000_000_000.0);
+        } else if (amount >= 1_000_000L) {
+            return String.format("%.1fM", amount / 1_000_000.0);
+        } else {
+            return String.valueOf(amount);
         }
     }
 }
