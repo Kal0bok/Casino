@@ -86,5 +86,31 @@ public class сasinoUI {
 
         frame.add(panel, BorderLayout.SOUTH);
     }
+    
+}
+private void setupInfoPanel() {
+    JPanel panel = new JPanel();
+    panel.setLayout(new GridLayout(2, 1));
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 30, 5, 30));
+    panel.setBackground(new Color(15, 30, 60));
+
+    balanceLabel = new JLabel("", SwingConstants.CENTER);
+    balanceLabel.setForeground(Color.CYAN);
+    balanceLabel.setFont(new Font("Arial", Font.BOLD, 18));
+
+    resultLabel = new JLabel("Press SPIN to play!", SwingConstants.CENTER);
+    resultLabel.setForeground(Color.LIGHT_GRAY);
+    resultLabel.setFont(new Font("Arial", Font.ITALIC, 16));
+
+    panel.add(balanceLabel);
+    panel.add(resultLabel);
+
+    frame.add(panel, BorderLayout.NORTH);
+}
+
+public JLabel[] getReels() { return reels; }
+public JLabel getResultLabel() { return resultLabel; }
+public JButton getSpinButton() { return spinButton; }
+public BalanceManager getBalanceManager() { return balanceManager; }
 }
 }
