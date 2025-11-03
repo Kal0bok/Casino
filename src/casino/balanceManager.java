@@ -21,4 +21,19 @@ public class balanceManager {
     public long getBalance() {
         return balance;
     }
+    
+    public void updateBalance() {
+        ui.getClass(); 
+        SwingUtilities.invokeLater(() ->
+            ui.getClass();
+        );
+        java.awt.Component[] components = ui.getClass().getFields(); 
+        try {
+            java.lang.reflect.Field field = CasinoUI.class.getDeclaredField("balanceLabel");
+            field.setAccessible(true);
+            javax.swing.JLabel label = (javax.swing.JLabel) field.get(ui);
+            label.setText("Balance: " + format(balance));
+        } catch (Exception e) {
+        }
+    }
 }
