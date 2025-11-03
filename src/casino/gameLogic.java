@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 public class gameLogic {
-	private static final String[] EMOJIS = {"Cherry", "Lemon", "Watermelon", "Beer", "Diamond"};
+	private static final String[] EMOJIS = {"🍒", "🍋", "🍉", "🍺", "💎"};
     private static final Random random = new Random();
 
     private final casinoUI ui;
