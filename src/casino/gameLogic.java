@@ -1,7 +1,15 @@
 package casino;
 
-public class gameLogic {
+import java.util.Random;
 
-	//started
+public class gameLogic {
+	private static final String[] EMOJIS = {"Cherry", "Lemon", "Watermelon", "Beer", "Diamond"};
+    private static final Random random = new Random();
+
+    private final casinoUI ui;
+
+    public gameLogic(casinoUI ui) {
+        this.ui = ui;
 	
+}
 }
