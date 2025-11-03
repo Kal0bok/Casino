@@ -39,4 +39,39 @@ public class AccountManager {
             saveAccounts();
         }
     }
+    
+    public void register() {
+        JTextField nickField = new JTextField(15);
+        JPasswordField passField = new JPasswordField(15);
+
+        JPanel panel = new JPanel(new GridLayout(0, 2, 5, 10));
+        panel.add(new JLabel("Nickname:"));
+        panel.add(nickField);
+        panel.add(new JLabel("Password:"));
+        panel.add(passField);
+
+        int result = JOptionPane.showConfirmDialog(mainMenu.getFrame(), panel,
+                "Register New Account", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String nick = nickField.getText().trim();
+            String pass = new String(passField.getPassword()).trim();
+
+            if (nick.isEmpty() || pass.isEmpty()) {
+                JOptionPane.showMessageDialog(mainMenu.getFrame(), "Fill all fields!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (accounts.containsKey(nick)) {
+                JOptionPane.showMessageDialog(mainMenu.getFrame(), "Nickname already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            accounts.put(nick, new Player(nick, pass, 1000L));
+            saveAccounts();
+            JOptionPane.showMessageDialog(mainMenu.getFrame(),
+                    "<html><h2>Account Created!</h2><p>Nickname: <b>" + nick + "</b><br>Balance: <b>1,000</b> coins</p></html>",
+                    "Success", JOptionPane.INFORMATION_MESSAGE);
+            loginAndStart(nick);
+        }
+    }
 }
