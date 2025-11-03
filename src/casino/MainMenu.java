@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -113,5 +114,22 @@ public class MainMenu {
         cornerPanel.add(rightPanel, BorderLayout.EAST);
 
         frame.add(cornerPanel, BorderLayout.SOUTH);
+    }
+    
+    private void showHelp() {
+        String help = """
+            <html>
+            <h2>How to Play:</h2>
+            <ul>
+            <li>Enter your bet in the field</li>
+            <li>Press <b>SPIN!</b></li>
+            <li>Match symbols to win!</li>
+            <li>2 same = x2 bet</li>
+            <li>3 same = bigger win!</li>
+            </ul>
+            <p><b>Good luck!</b></p>
+            </html>
+            """;
+        JOptionPane.showMessageDialog(frame, help, "Help", JOptionPane.INFORMATION_MESSAGE);
     }
 }
