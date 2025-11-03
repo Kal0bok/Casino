@@ -109,7 +109,6 @@ public class casinoUI {
         frame.add(panel, BorderLayout.NORTH);
     }
 
-    // Геттеры для других классов
     public JLabel[] getReels() { return reels; }
     public JLabel getResultLabel() { return resultLabel; }
     public JButton getSpinButton() { return spinButton; }
