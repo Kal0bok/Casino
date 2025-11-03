@@ -113,11 +113,11 @@ public class AccountManager {
     }
 
     public long getBalance() {
-        return getBalance();
+        return balance;  
     }
 
     public void setBalance(long balance) {
-        this.balance = balance;
+        this.balance = balance;  
     }
 
     private void saveAccounts() {
@@ -132,8 +132,9 @@ public class AccountManager {
     }
 
     public static class Player {
-        String nickname, password;
-        long balance;
+        private String nickname;
+        private String password;
+        private long balance;
 
         Player(String n, String p, long b) {
             this.nickname = n;
@@ -141,14 +142,20 @@ public class AccountManager {
             this.balance = b;
         }
 
-		public void setBalance(long balance2) {
-			// TODO Auto-generated method stub
-			
-		}
+        public String getNickname() {
+            return nickname;
+        }
 
-		public long getBalance() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+        public String getPassword() {
+            return password;
+        }
+
+        public long getBalance() {
+            return balance;
+        }
+
+        public void setBalance(long balance) {
+            this.balance = balance;
+        }
     }
 }

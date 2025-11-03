@@ -8,7 +8,7 @@ public class balanceManager {
 
     public balanceManager(casinoUI ui, long initialBalance) {
         this.ui = ui;
-        this.balance = initialBalance; // УСТАНАВЛИВАЕМ ПЕРЕДАННЫЙ БАЛАНС
+        this.balance = initialBalance; 
         updateBalance();
     }
 
