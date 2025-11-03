@@ -32,4 +32,11 @@ public class AccountManager {
             JOptionPane.showMessageDialog(null, "Error loading accounts!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private void createAdminIfNotExists() {
+        if (!accounts.containsKey("admin")) {
+            accounts.put("admin", new Player("admin", "admin", 300_000_000_000_000L)); // 300T
+            saveAccounts();
+        }
+    }
 }
