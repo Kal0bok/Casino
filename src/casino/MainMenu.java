@@ -3,6 +3,8 @@ package casino;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -76,5 +78,40 @@ public class MainMenu {
         btn.setBorder(BorderFactory.createEmptyBorder(12, 30, 12, 30));
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         return btn;
+    }
+    
+    private void createInfoButtons() {
+        JPanel cornerPanel = new JPanel(new BorderLayout());
+        cornerPanel.setBackground(new Color(20, 30, 60));
+        cornerPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JButton helpBtn = new JButton("?");
+        helpBtn.setFont(new Font("Arial", Font.BOLD, 18));
+        helpBtn.setForeground(Color.CYAN);
+        helpBtn.setBackground(new Color(40, 40, 80));
+        helpBtn.setPreferredSize(new Dimension(40, 40));
+        helpBtn.setToolTipText("How to play");
+        helpBtn.addActionListener(e -> showHelp());
+
+        JButton rulesBtn = new JButton("!");
+        rulesBtn.setFont(new Font("Arial", Font.BOLD, 18));
+        rulesBtn.setForeground(Color.YELLOW);
+        rulesBtn.setBackground(new Color(80, 40, 40));
+        rulesBtn.setPreferredSize(new Dimension(40, 40));
+        rulesBtn.setToolTipText("Game Rules");
+        rulesBtn.addActionListener(e -> showRules());
+
+        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        leftPanel.setBackground(new Color(20, 30, 60));
+        leftPanel.add(helpBtn);
+
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        rightPanel.setBackground(new Color(20, 30, 60));
+        rightPanel.add(rulesBtn);
+
+        cornerPanel.add(leftPanel, BorderLayout.WEST);
+        cornerPanel.add(rightPanel, BorderLayout.EAST);
+
+        frame.add(cornerPanel, BorderLayout.SOUTH);
     }
 }
