@@ -21,7 +21,6 @@ public class сasinoUI {
     private final GameLogic gameLogic;
     private final BalanceManager balanceManager;
 
-    public casinoUI() {
         gameLogic = new GameLogic(this);
         balanceManager = new BalanceManager(this);
 
@@ -39,3 +38,23 @@ public class сasinoUI {
         frame.setVisible(true);
         balanceManager.updateBalance();
     }
+    private JPanel setupReels() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(1, 3, 15, 0));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        panel.setBackground(new Color(10, 25, 45));
+
+        for (int i = 0; i < 3; i++) {
+            reels[i] = new JLabel("?", SwingConstants.CENTER);
+            reels[i].setFont(new Font("Segoe UI Emoji", Font.BOLD, 70));
+            reels[i].setForeground(Color.YELLOW);
+            reels[i].setOpaque(true);
+            reels[i].setBackground(new Color(20, 40, 80));
+            reels[i].setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 3, true));
+            panel.add(reels[i]);
+        }
+
+        frame.add(panel, BorderLayout.CENTER);
+        return panel;
+    }
+}
