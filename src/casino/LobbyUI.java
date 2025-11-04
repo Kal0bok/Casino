@@ -30,4 +30,22 @@ public class LobbyUI {
         frame.setVisible(true);
     }
 	
+    private void createTopBar() {
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(new Color(10, 20, 40));
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+
+
+        JLabel logo = new JLabel("🎰 CASINO", SwingConstants.LEFT);
+        logo.setFont(new Font("Arial", Font.BOLD, 26));
+        logo.setForeground(Color.ORANGE);
+        logo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                frame.dispose();
+                new MainMenu(); 
+            }
+        });
+    
+}
 }
