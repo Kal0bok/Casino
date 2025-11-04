@@ -82,5 +82,21 @@ private JButton createNavButton(String text) {
     btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
     return btn;
 }
+private void openProfile() {
+    new AccountUI(player);
+}
+
+private void openSection(String name) {
+    frame.dispose();
+    switch (name) {
+        case "Casino" -> new SpinsUI(player, accountManager);
+        case "Roulette" -> new RouletteUI(player, accountManager);
+        case "Poker" -> new PokerUI(player, accountManager);
+        case "Esports" -> new CyberSportUI(player, accountManager);
+        case "Virtual Sports" -> new VirtualSportUI(player, accountManager);
+        case "Sports" -> new SportUI(player, accountManager);
+    }
+}
+
 
 }
