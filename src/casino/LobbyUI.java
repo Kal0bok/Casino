@@ -108,15 +108,22 @@ public class LobbyUI {
         JPanel promoPanel = new JPanel(new GridLayout(1, 2, 10, 10));
         promoPanel.setBackground(new Color(15, 25, 50));
 
-        JLabel gifPlaceholder = new JLabel(new ImageIcon(getClass().getResource("/GIF/lobby.gif")), SwingConstants.CENTER);
-        gifPlaceholder.setForeground(Color.GRAY);
-        gifPlaceholder.setFont(new Font("Arial", Font.ITALIC, 16));
-        gifPlaceholder.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
+        JLabel gifLabel = new JLabel(new ImageIcon(getClass().getResource("/GIF/lobby.gif")), SwingConstants.CENTER);
+        gifLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
 
-        JLabel promoText = new JLabel("<html><h2>CASINO</h2><p>Welcome to the world of luck!</p></html>", SwingConstants.CENTER);
-        promoText.setForeground(Color.WHITE);
+        String promoHTML = "<html>"
+                + "<div style='text-align:center;'>"
+                + "<h2 style='color:#FFD700;'>200 CREDITS EVERY DAY IN SLOTS PUSH</h2>"
+                + "<p style='color:white; font-size:14px;'>"
+                + "Spin in November! Play your favorite slots and get cashback.<br>"
+                + "Up to 200 credits per day and up to 6000 credits for the whole month."
+                + "</p>"
+                + "</div>"
+                + "</html>";
 
-        promoPanel.add(gifPlaceholder);
+        JLabel promoText = new JLabel(promoHTML, SwingConstants.CENTER);
+
+        promoPanel.add(gifLabel);
         promoPanel.add(promoText);
 
         JPanel categoriesPanel = new JPanel(new GridLayout(1, 3, 15, 0));
@@ -131,6 +138,7 @@ public class LobbyUI {
 
         return middlePanel;
     }
+
 
     private JPanel createGameCard(String title, Object gifPathOrURL, String description) {
         JPanel card = new JPanel(new BorderLayout());

@@ -1,16 +1,2 @@
-jjmhjhjm:hjmh:1000
-рпол:рол:1000
-wer:wer:0
-admin:admin:0
-fghfgh:fghfgh:1000
-adasd:asdasd:1000
-wqe:qwe:1000
-hfgh:fghfh:1000
-fghf:fghf:1000
 1:1:1000
-dfgdfg:dfgdfg:1000
-фва:фыва:1000
-впа:вап:1000
-фвыа:фыва:1000
-sdf:sdf:1000
-ыва:ыва:1000
+admin:admin:300000000000000
