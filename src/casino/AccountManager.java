@@ -106,13 +106,29 @@ public class AccountManager {
     }
 
     private void loginAndStart(String nickname) {
-    	    Player player = new Player(nickname, nickname, 0);
-    	    accounts.put(nickname, player);
-    	    saveAccounts();
-    	    mainMenu.getFrame().dispose();
+        Player player = accounts.get(nickname);
+        if (player == null) {
+            JOptionPane.showMessageDialog(null, "Account not found!");
+            return;
+        }
 
-    	    new LobbyUI(player, this);
-    	}
+        mainMenu.getFrame().dispose();
+        new LobbyUI(player, this);
+    }
+
+    private void registerAndStart(String nickname) {
+        if (accounts.containsKey(nickname)) {
+            JOptionPane.showMessageDialog(null, "This nickname already exists!");
+            return;
+        }
+
+        Player player = new Player(nickname, nickname, 0);
+        accounts.put(nickname, player);
+        saveAccounts();
+
+        mainMenu.getFrame().dispose();
+        new LobbyUI(player, this);
+    }
    
 
 
