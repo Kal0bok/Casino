@@ -122,9 +122,9 @@ public class LobbyUI {
         JPanel categoriesPanel = new JPanel(new GridLayout(1, 3, 15, 0));
         categoriesPanel.setBackground(new Color(15, 25, 50));
 
-        categoriesPanel.add(createGameCard("Poker", "path_to_gif/poker.gif", "Play poker and win big!"));
-        categoriesPanel.add(createGameCard("Spins", "path_to_gif/spins.gif", "Try your luck with slot machines!"));
-        categoriesPanel.add(createGameCard("Roulette", "path_to_gif/roulette.gif", "Spin the wheel and feel the thrill!"));
+        categoriesPanel.add(createGameCard("Poker", getClass().getResource("/GIF/poker.gif"), "Play poker and win big!"));
+        categoriesPanel.add(createGameCard("Spins", getClass().getResource("/GIF/slots.gif"), "Try your luck with slot machines!"));
+        categoriesPanel.add(createGameCard("Roulette", getClass().getResource("/GIF/roulette.gif"), "Spin the wheel and feel the thrill!"));
 
         middlePanel.add(promoPanel);
         middlePanel.add(categoriesPanel);
@@ -132,7 +132,7 @@ public class LobbyUI {
         return middlePanel;
     }
 
-    private JPanel createGameCard(String title, String gifPath, String description) {
+    private JPanel createGameCard(String title, Object gifPathOrURL, String description) {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(new Color(25, 40, 80));
         card.setBorder(BorderFactory.createLineBorder(new Color(255, 215, 0), 2, true));
@@ -142,9 +142,14 @@ public class LobbyUI {
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setForeground(Color.WHITE);
 
-        JLabel gifLabel = new JLabel("[GIF: " + gifPath + "]", SwingConstants.CENTER);
-        gifLabel.setForeground(Color.LIGHT_GRAY);
-        gifLabel.setFont(new Font("Arial", Font.ITALIC, 14));
+        JLabel gifLabel;
+        if (gifPathOrURL instanceof String) {
+            gifLabel = new JLabel(new ImageIcon((String) gifPathOrURL), SwingConstants.CENTER);
+        } else if (gifPathOrURL instanceof java.net.URL) {
+            gifLabel = new JLabel(new ImageIcon((java.net.URL) gifPathOrURL), SwingConstants.CENTER);
+        } else {
+            gifLabel = new JLabel("[GIF PLACEHOLDER]", SwingConstants.CENTER);
+        }
 
         JLabel descLabel = new JLabel("<html><center>" + description + "</center></html>", SwingConstants.CENTER);
         descLabel.setForeground(Color.WHITE);
@@ -152,18 +157,6 @@ public class LobbyUI {
         card.add(titleLabel, BorderLayout.NORTH);
         card.add(gifLabel, BorderLayout.CENTER);
         card.add(descLabel, BorderLayout.SOUTH);
-
-        // Click actions
-        card.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent e) {
-                frame.dispose();
-                switch (title) {
-                    case "Poker" -> openPlaceholder("Poker");
-                    case "Spins" -> new casinoUI(player, accountManager);
-                    case "Roulette" -> openPlaceholder("Roulette");
-                }
-            }
-        });
 
         return card;
     }
