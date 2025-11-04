@@ -130,7 +130,32 @@ private void createMainContent() {
     mainPanel.add(gamesPanel, BorderLayout.CENTER);
 
     frame.add(mainPanel, BorderLayout.CENTER);
-}
+    private JPanel createGameCard(String title, String gifPath, String desc, java.awt.event.ActionListener listener) {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(new Color(25, 45, 85));
+        panel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
+        panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                listener.actionPerformed(new ActionEvent(panel, ActionEvent.ACTION_PERFORMED, null));
+            }
+        });
 
+        JLabel name = new JLabel(title, SwingConstants.CENTER);
+        name.setFont(new Font("Arial", Font.BOLD, 20));
+        name.setForeground(Color.WHITE);
 
+        JLabel gif = new JLabel("[GIF: " + gifPath + "]", SwingConstants.CENTER);
+        gif.setForeground(Color.LIGHT_GRAY);
+        gif.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
+        // TODO: Replace [GIF: ...] with actual GIF file using new ImageIcon("path")
+
+        JLabel descLabel = new JLabel("<html><div style='color:lightgray; text-align:center;'>" + desc + "</div></html>", SwingConstants.CENTER);
+
+        panel.add(name, BorderLayout.NORTH);
+        panel.add(gif, BorderLayout.CENTER);
+        panel.add(descLabel, BorderLayout.SOUTH);
+
+        return panel;
+    }
 }
