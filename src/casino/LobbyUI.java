@@ -98,5 +98,39 @@ private void openSection(String name) {
     }
 }
 
+private void createMainContent() {
+    JPanel mainPanel = new JPanel();
+    mainPanel.setLayout(new BorderLayout());
+    mainPanel.setBackground(new Color(15, 30, 60));
+
+    // Top rectangle
+    JPanel promoPanel = new JPanel(new GridLayout(1, 2));
+    promoPanel.setBackground(new Color(25, 45, 85));
+    promoPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+
+    JLabel gifLabel = new JLabel("GIF PLACEHOLDER", SwingConstants.CENTER);
+    gifLabel.setForeground(Color.LIGHT_GRAY);
+    gifLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+    JLabel textLabel = new JLabel("<html><h1 style='color:white;'>CASINO</h1><p style='color:lightgray;'>Your favorite place to play and win!</p></html>", SwingConstants.CENTER);
+
+    promoPanel.add(gifLabel);
+    promoPanel.add(textLabel);
+
+    // Bottom section with 3 clickable game cards
+    JPanel gamesPanel = new JPanel(new GridLayout(1, 3, 20, 0));
+    gamesPanel.setBackground(new Color(15, 30, 60));
+    gamesPanel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
+
+    gamesPanel.add(createGameCard("Poker", "GIF_PATH_POKER", "Play cards, test your skill!", e -> openSection("Poker")));
+    gamesPanel.add(createGameCard("Spins", "GIF_PATH_SPINS", "Try your luck on the slots!", e -> openSection("Casino")));
+    gamesPanel.add(createGameCard("Roulette", "GIF_PATH_ROULETTE", "Spin the wheel and win big!", e -> openSection("Roulette")));
+
+    mainPanel.add(promoPanel, BorderLayout.NORTH);
+    mainPanel.add(gamesPanel, BorderLayout.CENTER);
+
+    frame.add(mainPanel, BorderLayout.CENTER);
+}
+
 
 }
