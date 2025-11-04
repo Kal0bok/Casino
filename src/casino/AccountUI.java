@@ -1,7 +1,13 @@
 package casino;
 
-public class AccountUI {
+import javax.swing.*;
+import java.awt.*;
 
-	//start
-	
+public class AccountUI {
+	 private JFrame frame;
+	    private final AccountManager.Player player;
+
+	    public AccountUI(AccountManager.Player player) {
+	        this.player = player;
+	        initUI();
 }
