@@ -76,7 +76,14 @@ public class LobbyUI {
         navPanel.add(virtualSportsButton);
         navPanel.add(sportsButton);
 
-        JButton accountButton = createNavButton("My Account (" + player.getNickname() + ")");
+        ImageIcon profileIcon = new ImageIcon(getClass().getResource("/Images/profile.png"));
+
+        JButton accountButton = new JButton(profileIcon);
+        accountButton.setToolTipText("My Account (" + player.nickname + ")");
+        accountButton.setBorder(BorderFactory.createEmptyBorder());
+        accountButton.setContentAreaFilled(false); // прозрачная кнопка
+        accountButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         accountButton.addActionListener(e -> {
             frame.dispose();
             new AccountUI(player, accountManager);
