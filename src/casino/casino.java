@@ -9,7 +9,7 @@ casino
 ├── MainMenu.java           → Start window
 ├── AccountManager.java     ← Registration, login, save
 ├── GameLogic.java         → GAME LOGIC	(spin, animation)
-├──BalanceManager.java    → Balance, wins, formating
+├── BalanceManager.java    → Balance, wins, formating
 ├── LobbyUI.java            ← New lobby screen (after login)
 ├── AccountUI.java          ← Window profile player
 ├── PokerUI.java            ← Poker game
