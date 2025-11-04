@@ -3,8 +3,8 @@ package casino;
 import javax.swing.*;
 import java.awt.*;
 
-public class CyberSportUI {
-    public CyberSportUI(AccountManager.Player player, AccountManager accountManager) {
+public class VirtualSportUI {
+    public VirtualSportUI(AccountManager.Player player, AccountManager accountManager) {
         JFrame frame = new JFrame("Poker");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
