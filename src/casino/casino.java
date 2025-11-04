@@ -13,7 +13,7 @@ casino
 ├── LobbyUI.java            ← New lobby screen (after login)
 ├── AccountUI.java          ← Window profile player
 ├── PokerUI.java            ← Poker game
-├── RouletteUI.java         ← Roulette game
+├── RoletteUI.java         ← Roulette game
 ├── SpinsUI.java            ← Spins window (our old slots)
 ├── CyberSportUI.java       ← CyberSport game
 ├── VirtualSportUI.java     ← ЗаглVirtualSport game
