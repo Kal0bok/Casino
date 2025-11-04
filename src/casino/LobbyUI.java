@@ -108,7 +108,7 @@ public class LobbyUI {
         JPanel promoPanel = new JPanel(new GridLayout(1, 2, 10, 10));
         promoPanel.setBackground(new Color(15, 25, 50));
 
-        JLabel gifPlaceholder = new JLabel("[GIF PLACEHOLDER — path here]", SwingConstants.CENTER);
+        JLabel gifPlaceholder = new JLabel(new ImageIcon(getClass().getResource("/GIF/lobby.gif")), SwingConstants.CENTER);
         gifPlaceholder.setForeground(Color.GRAY);
         gifPlaceholder.setFont(new Font("Arial", Font.ITALIC, 16));
         gifPlaceholder.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true));
