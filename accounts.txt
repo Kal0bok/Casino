@@ -1,6 +1,8 @@
+fghf:fghf:1000
 dfgdfg:dfgdfg:1000
 впа:вап:1000
 sdf:sdf:1000
+wer:wer:0
 admin:admin:300000000000000
 ыва:ыва:1000
 fghfgh:fghfgh:1000

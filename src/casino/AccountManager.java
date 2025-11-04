@@ -106,10 +106,14 @@ public class AccountManager {
     }
 
     private void loginAndStart(String nickname) {
-        Player player = accounts.get(nickname);
-        mainMenu.getFrame().dispose();
-        new casinoUI(player, this); 
-    }
+    	    Player player = new Player(nickname, nickname, 0);
+    	    accounts.put(nickname, player);
+    	    saveAccounts();
+    	    mainMenu.getFrame().dispose();
+
+    	    new LobbyUI(player, this);
+    	}
+   
 
 
     public long getBalance() {
