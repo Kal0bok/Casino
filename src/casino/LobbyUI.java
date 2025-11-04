@@ -72,4 +72,15 @@ public class LobbyUI {
 	frame.add(topPanel, BorderLayout.NORTH);
 }
 
+private JButton createNavButton(String text) {
+    JButton btn = new JButton(text);
+    btn.setFont(new Font("Arial", Font.BOLD, 16));
+    btn.setForeground(Color.WHITE);
+    btn.setBackground(new Color(30, 50, 90));
+    btn.setFocusPainted(false);
+    btn.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    return btn;
+}
+
 }
