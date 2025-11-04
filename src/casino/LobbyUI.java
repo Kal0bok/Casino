@@ -81,7 +81,7 @@ public class LobbyUI {
         JButton accountButton = new JButton(profileIcon);
         accountButton.setToolTipText("My Account (" + player.nickname + ")");
         accountButton.setBorder(BorderFactory.createEmptyBorder());
-        accountButton.setContentAreaFilled(false); // прозрачная кнопка
+        accountButton.setContentAreaFilled(false); 
         accountButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         accountButton.addActionListener(e -> {
@@ -95,6 +95,8 @@ public class LobbyUI {
 
         return topPanel;
     }
+    
+    
 
     private JButton createNavButton(String text) {
         JButton btn = new JButton(text);

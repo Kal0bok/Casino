@@ -39,5 +39,18 @@ public class AccountUI {
         frame.add(info);
 
         frame.setVisible(true);
+        
+        JButton back = new JButton("← Back to Lobby");
+        back.setBackground(new Color(40, 60, 100));
+        back.setForeground(Color.WHITE);
+        back.setFocusPainted(false);
+        back.addActionListener(e -> {
+            frame.dispose();              
+            new LobbyUI(player, accountManager);  
+        });
+
+        frame.add(back, BorderLayout.SOUTH);
     }
+    
+    
 }
