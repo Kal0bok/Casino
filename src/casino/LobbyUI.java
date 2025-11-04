@@ -46,6 +46,30 @@ public class LobbyUI {
                 new MainMenu(); 
             }
         });
-    
 }
+    JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+    centerPanel.setBackground(new Color(10, 20, 40));
+
+    String[] sections = {"Casino", "Roulette", "Poker", "Esports", "Virtual Sports", "Sports"};
+    for (String name : sections) {
+        JButton btn = createNavButton(name);
+        btn.addActionListener(e -> openSection(name));
+        centerPanel.add(btn);
+    }
+}
+	JButton profileBtn = new JButton(player.nickname + " ⮟");
+	profileBtn.setFont(new Font("Arial", Font.BOLD, 16));
+	profileBtn.setBackground(new Color(40, 60, 100));
+	profileBtn.setForeground(Color.WHITE);
+	profileBtn.setFocusPainted(false);
+	profileBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	profileBtn.addActionListener(e -> openProfile());
+
+	topPanel.add(logo, BorderLayout.WEST);
+	topPanel.add(centerPanel, BorderLayout.CENTER);
+	topPanel.add(profileBtn, BorderLayout.EAST);
+
+	frame.add(topPanel, BorderLayout.NORTH);
+}
+
 }
