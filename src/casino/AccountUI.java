@@ -6,10 +6,14 @@ import java.awt.*;
 public class AccountUI {
     private JFrame frame;
     private final AccountManager.Player player;
+    @SuppressWarnings("unused")
+	private final AccountManager accountManager;
 
-    public AccountUI(AccountManager.Player player) {
+    public AccountUI(AccountManager.Player player, AccountManager accountManager) {
         this.player = player;
-        initUI();
+        this.accountManager = accountManager;
+
+        initUI(); 
     }
 
     private void initUI() {
@@ -19,7 +23,7 @@ public class AccountUI {
         frame.setLocationRelativeTo(null);
         frame.getContentPane().setBackground(new Color(20, 30, 60));
 
-        JLabel name = new JLabel("Username: " + player.nickname, SwingConstants.CENTER);
+        JLabel name = new JLabel("Username: " + player.getNickname(), SwingConstants.CENTER);
         name.setFont(new Font("Arial", Font.BOLD, 18));
         name.setForeground(Color.WHITE);
 

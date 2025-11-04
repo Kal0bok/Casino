@@ -132,7 +132,7 @@ public class AccountManager {
     }
 
     public static class Player {
-        private String nickname;
+        String nickname;
         private String password;
         private long balance;
 

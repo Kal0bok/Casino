@@ -16,7 +16,7 @@ casino
 ├── RoletteUI.java         ← Roulette game
 ├── SpinsUI.java            ← Spins window (our old slots)
 ├── CyberSportUI.java       ← CyberSport game
-├── VirtualSportUI.java     ← ЗаглVirtualSport game
+├── VirtualSportUI.java     ← VirtualSport game
 ├── SportUI.java            ← Sport game
 */
 
