@@ -175,8 +175,28 @@ public class LobbyUI {
         card.add(gifLabel, BorderLayout.CENTER);
         card.add(descLabel, BorderLayout.SOUTH);
 
+        card.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                frame.dispose();
+                openPlaceholder(title);
+            }
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                card.setBackground(new Color(35, 55, 110));
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                card.setBackground(new Color(25, 40, 80));
+            }
+        });
+
         return card;
     }
+
+
 
     private JPanel createBottomPanel() {
         JPanel bottom = new JPanel();
