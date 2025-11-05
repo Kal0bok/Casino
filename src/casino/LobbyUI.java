@@ -179,8 +179,41 @@ public class LobbyUI {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 frame.dispose();
-                openPlaceholder(title);
+                if (title.equals("Spins")) {
+                    new casinoUI(player, accountManager);
+                } else {
+                    openPlaceholder(title);
+                }
+                
+                java.awt.event.MouseAdapter cardClickListener = new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent e) {
+                        frame.dispose();
+                        if (title.equals("Spins")) {
+                            new casinoUI(player, accountManager);
+                        } else {
+                            openPlaceholder(title);
+                        }
+                    }
+
+                    @Override
+                    public void mouseEntered(java.awt.event.MouseEvent e) {
+                        card.setBackground(new Color(35, 55, 110));
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent e) {
+                        card.setBackground(new Color(25, 40, 80));
+                    }
+                };
+
+                card.addMouseListener(cardClickListener);
+                titleLabel.addMouseListener(cardClickListener);
+                gifLabel.addMouseListener(cardClickListener);
+                descLabel.addMouseListener(cardClickListener);
             }
+            
+            
 
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -192,6 +225,7 @@ public class LobbyUI {
                 card.setBackground(new Color(25, 40, 80));
             }
         });
+
 
         return card;
     }
