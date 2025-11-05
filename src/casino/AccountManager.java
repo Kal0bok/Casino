@@ -155,6 +155,7 @@ public class AccountManager {
         String nickname;
         private String password;
         private long balance;
+		public String username;
 
         Player(String n, String p, long b) {
             this.nickname = n;
