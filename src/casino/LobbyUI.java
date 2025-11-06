@@ -38,12 +38,15 @@ public class LobbyUI {
         titleLabel.setFont(new Font("Arial", Font.BOLD, 26));
         titleLabel.setForeground(new Color(255, 215, 0));
         titleLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         titleLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 frame.dispose();
-                new MainMenu();
+                new LobbyUI(player, accountManager);  
             }
         });
+
 
         JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 5));
         navPanel.setBackground(new Color(20, 30, 70));
